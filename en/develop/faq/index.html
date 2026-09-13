@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../images/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2641,14 +2641,14 @@
 
 <h1 id="freqtrade-faq">Freqtrade FAQ<a class="headerlink" href="#freqtrade-faq" title="Permanent link">&para;</a></h1>
 <h2 id="supported-markets">Supported Markets<a class="headerlink" href="#supported-markets" title="Permanent link">&para;</a></h2>
-<p>Freqtrade supports spot trading, as well as futures trading for some selected exchanges. Please refer to the <a href="../#supported-futures-exchanges-experimental">documentation start page</a> for an up-to-date list of supported exchanges.</p>
+<p>Freqtrade supports spot trading, as well as futures trading for some selected exchanges. Please refer to the <a href="../#supported-futures-exchanges">documentation start page</a> for an up-to-date list of supported exchanges.</p>
 <h3 id="can-my-bot-open-short-positions">Can my bot open short positions?<a class="headerlink" href="#can-my-bot-open-short-positions" title="Permanent link">&para;</a></h3>
 <p>Freqtrade can open short positions in futures markets.
 This requires the strategy to be made for this - and <code>"trading_mode": "futures"</code> in the configuration.
 Please make sure to read the <a href="../leverage/">relevant documentation page</a> first.</p>
 <p>In spot markets, you can in some cases use leveraged spot tokens, which reflect an inverted pair (eg. BTCUP/USD, BTCDOWN/USD, ETHBULL/USD, ETHBEAR/USD,...) which can be traded with Freqtrade.</p>
 <h3 id="can-my-bot-trade-options-or-futures">Can my bot trade options or futures?<a class="headerlink" href="#can-my-bot-trade-options-or-futures" title="Permanent link">&para;</a></h3>
-<p>Futures trading is supported for selected exchanges. Please refer to the <a href="../#supported-futures-exchanges-experimental">documentation start page</a> for an up-to-date list of supported exchanges.</p>
+<p>Futures trading is supported for selected exchanges. Please refer to the <a href="../#supported-futures-exchanges">documentation start page</a> for an up-to-date list of supported exchanges.</p>
 <h2 id="beginner-tips-tricks">Beginner Tips &amp; Tricks<a class="headerlink" href="#beginner-tips-tricks" title="Permanent link">&para;</a></h2>
 <ul>
 <li>When you work with your strategy &amp; hyperopt file you should use a proper code editor like VSCode or PyCharm. A good code editor will provide syntax highlighting as well as line numbers, making it easy to find syntax errors (most likely pointed out by Freqtrade during startup).</li>
@@ -2770,7 +2770,7 @@ While this makes the iteration slightly slower (due to the REST Api call) - it w
 <p>To fix this, redefine order types in the strategy to use "limit" instead of "market":</p>
 <div class="highlight"><pre><span></span><code>    <span class="n">order_types</span> <span class="o">=</span> <span class="p">{</span>
         <span class="o">...</span>
-        <span class="s2">&quot;stoploss&quot;</span><span class="p">:</span> <span class="s2">&quot;limit&quot;</span><span class="p">,</span>
+        <span class="s2">"stoploss"</span><span class="p">:</span> <span class="s2">"limit"</span><span class="p">,</span>
         <span class="o">...</span>
     <span class="p">}</span>
 </code></pre></div>
@@ -2784,16 +2784,16 @@ Futures will usually have to be enabled specifically.</p>
 <p>By default, the bot writes its log into stderr stream. This is implemented this way so that you can easily separate the bot's diagnostics messages from Backtesting, Edge and Hyperopt results, output from other various Freqtrade utility sub-commands, as well as from the output of your custom <code>print()</code>'s you may have inserted into your strategy. So if you need to search the log messages with the grep utility, you need to redirect stderr to stdout and disregard stdout.</p>
 <ul>
 <li>In unix shells, this normally can be done as simple as:
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>freqtrade<span class="w"> </span>--some-options<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;something&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>freqtrade<span class="w"> </span>--some-options<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'something'</span>
 </code></pre></div>
 (note, <code>2&gt;&amp;1</code> and <code>&gt;/dev/null</code> should be written in this order)</li>
 </ul>
 <ul>
 <li>Bash interpreter also supports so called process substitution syntax, you can grep the log for a string with it as:
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>freqtrade<span class="w"> </span>--some-options<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>&gt;<span class="o">(</span>grep<span class="w"> </span><span class="s1">&#39;something&#39;</span><span class="o">)</span><span class="w"> </span>&gt;/dev/null
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>freqtrade<span class="w"> </span>--some-options<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>&gt;<span class="o">(</span>grep<span class="w"> </span><span class="s1">'something'</span><span class="o">)</span><span class="w"> </span>&gt;/dev/null
 </code></pre></div>
 or
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>freqtrade<span class="w"> </span>--some-options<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>&gt;<span class="o">(</span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;something&#39;</span><span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>freqtrade<span class="w"> </span>--some-options<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>&gt;<span class="o">(</span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">'something'</span><span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="o">)</span>
 </code></pre></div></li>
 </ul>
 <ul>
@@ -2801,15 +2801,15 @@ or
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>freqtrade<span class="w"> </span>--logfile<span class="w"> </span>/path/to/mylogfile.log<span class="w"> </span>--some-options
 </code></pre></div>
 and then grep it as:
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/path/to/mylogfile.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;something&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/path/to/mylogfile.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'something'</span>
 </code></pre></div>
 or even on the fly, as the bot works and the log file grows:
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/path/to/mylogfile.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;something&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/path/to/mylogfile.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'something'</span>
 </code></pre></div>
 from a separate terminal window.</li>
 </ul>
 <p>On Windows, the <code>--logfile</code> option is also supported by Freqtrade and you can use the <code>findstr</code> command to search the log for the string of interest:
-<div class="highlight"><pre><span></span><code>&gt; type \path\to\mylogfile.log | findstr &quot;something&quot;
+<div class="highlight"><pre><span></span><code>&gt; type \path\to\mylogfile.log | findstr "something"
 </code></pre></div></p>
 <h2 id="hyperopt-module">Hyperopt module<a class="headerlink" href="#hyperopt-module" title="Permanent link">&para;</a></h2>
 <h3 id="why-does-freqtrade-not-have-gpu-support">Why does freqtrade not have GPU support?<a class="headerlink" href="#why-does-freqtrade-not-have-gpu-support" title="Permanent link">&para;</a></h3>
@@ -2978,7 +2978,7 @@ We only support the most recent release (e.g. 2025.8) and the current developmen
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.annotate", "search.share", "content.code.copy", "content.action.edit", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../javascripts/config.js"></script>
       
